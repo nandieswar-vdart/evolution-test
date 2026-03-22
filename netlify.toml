@@ -1,11 +1,6 @@
 [build]
   publish = "."
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:; connect-src 'self' https://cdn.tailwindcss.com"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
