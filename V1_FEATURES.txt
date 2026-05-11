@@ -1,0 +1,42 @@
+ProTasker V1 - Complete Feature List
+
+Dashboard Features
+- Task Statistics Overview: Display of total tasks, in-progress count, and completed tasks
+- Recent Activity Feed: Real-time activity log showing recent actions (task completions, project creation, comments, system updates)
+
+Projects Management
+- Project List View: Tabular display of all projects with details
+- Project Search: Search functionality to filter projects by name
+- Status Filtering: Filter projects by status (All Statuses, Active, In Review, Completed)
+- Progress Tracking: Display project progress percentages
+- Create New Project: Button to initiate new project creation
+- Project Owner Information: Display of project owner/assignee
+
+Settings & Preferences
+- Dark Mode Toggle: Toggle between light and dark interface themes
+- Language Selection: Choose between multiple languages (English, Spanish, French)
+- Timezone Configuration: Select timezone settings
+- Preference Persistence: Save and apply user preferences
+
+Security Management
+- Password Reset: Ability to change account password
+- Security Controls: Basic security settings access
+
+Billing & Subscription
+- Plan Information: Display current subscription plan (Free Starter Plan)
+- Plan Upgrade: Option to upgrade to premium plans
+
+User Profile Management
+- Profile Information: Edit user name, email, and bio
+- Avatar Management: Display user avatar from profile service
+- Profile Updates: Save and update profile information
+- Editable Fields: Name and bio (email is read-only)
+
+Navigation & UI
+- Sidebar Navigation: Primary navigation menu with sections:
+  - Dashboard
+  - Projects
+  - Settings
+  - Profile
+- Active Page Highlighting: Visual indication of current active page in navigation
+- Responsive Layout: Flex-based layout with sidebar and main content area
