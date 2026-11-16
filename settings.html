@@ -4,143 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preferences - ProTasker V2</title>
-    <link href="style.css" rel="stylesheet">
+    <title>Settings - ProTasker V1</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        .tab-btn-active { background-color: #4f46e5 !important; color: white !important; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2) !important; }
-        .tab-btn-inactive { color: #94a3b8 !important; }
-        .toggle-v2-active { background-color: #4f46e5 !important; }
-        .toggle-v2-dot-active { right: 0.25rem !important; }
+        .tab-active { color: #2563eb !important; border-bottom: 2px solid #2563eb !important; font-weight: 700 !important; }
+        .tab-inactive { color: #9ca3af !important; border-bottom: 2px solid transparent !important; font-weight: 500 !important; }
+        .toggle-active { background-color: #2563eb !important; }
+        .toggle-dot-active { left: 1.5rem !important; }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-900 font-sans selection:bg-indigo-100">
+<body class="bg-gray-50 text-gray-900 font-sans">
     <div class="flex min-h-screen">
-        <aside class="w-64 bg-white border-r border-slate-200 p-6">
-            <div class="flex items-center gap-3 mb-10">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black">P</div>
-                <h1 class="text-2xl font-black tracking-tighter text-slate-800">ProTasker</h1>
+        <aside class="w-64 bg-white border-r border-gray-200 p-6">
+            <div class="flex items-center gap-3 mb-10 px-2">
+                <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold">P</div>
+                <h1 class="text-xl font-bold tracking-tight">ProTasker</h1>
             </div>
-            <nav class="space-y-1">
-                <a href="index.html" class="flex items-center gap-3 px-4 py-3.5 text-slate-500 hover:bg-slate-50 hover:text-indigo-600 rounded-2xl font-bold">Home</a>
-                <a href="workspaces.html" class="flex items-center gap-3 px-4 py-3.5 text-slate-500 hover:bg-slate-50 hover:text-indigo-600 rounded-2xl font-bold">Workspaces</a>
-                <a href="teams.html" class="flex items-center gap-3 px-4 py-3.5 text-slate-500 hover:bg-slate-50 hover:text-indigo-600 rounded-2xl font-bold">Teams</a>
-                <a href="settings.html" class="flex items-center gap-3 px-4 py-3.5 bg-indigo-50 text-indigo-700 rounded-2xl font-bold">Preferences</a>
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <span>Dashboard</span>
+                </a>
+                <a href="projects.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <span>Projects</span>
+                </a>
+                <a href="settings.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-medium">
+                    <span>Settings</span>
+                </a>
+                <a href="profile.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <span>Profile</span>
+                </a>
             </nav>
         </aside>
 
-        <main class="flex-1 overflow-y-auto">
-            <header class="h-20 bg-white border-b border-slate-200 px-10 flex items-center sticky top-0 z-20">
-                <h2 class="text-xl font-black text-slate-800">Preferences & Account</h2>
+        <main class="flex-1 p-10">
+            <header class="mb-10">
+                <h2 class="text-3xl font-bold text-gray-900">Settings</h2>
+                <p class="text-gray-500 mt-1">Adjust your experience and security defaults.</p>
             </header>
 
-            <div class="p-10 max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
-                <div class="w-full md:w-56 space-y-1">
-                    <button onclick="setTab('general')" id="tab-general" class="tab-btn-active w-full text-left px-5 py-3 rounded-2xl font-black transition-all">General</button>
-                    <button onclick="setTab('account')" id="tab-account" class="tab-btn-inactive w-full text-left px-5 py-3 rounded-2xl font-black transition-all hover:bg-slate-100">Account</button>
-                    <button onclick="setTab('security')" id="tab-security" class="tab-btn-inactive w-full text-left px-5 py-3 rounded-2xl font-black transition-all hover:bg-slate-100">Security</button>
-                    <button onclick="setTab('notifications')" id="tab-notifications" class="tab-btn-inactive w-full text-left px-5 py-3 rounded-2xl font-black transition-all hover:bg-slate-100">Notifications</button>
-                    <button onclick="alert('System: Signing out...')" class="w-full text-left px-5 py-3 text-red-400 hover:bg-red-50 rounded-2xl font-black transition-all">Logout</button>
+            <div class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow-sm">
+                <div class="flex border-b border-gray-100" id="tabContainer">
+                    <button onclick="switchTab('preferences')" id="btn-preferences" class="px-6 py-4 text-sm tab-active">Preferences</button>
+                    <button onclick="switchTab('security')" id="btn-security" class="px-6 py-4 text-sm tab-inactive">Security</button>
+                    <button onclick="switchTab('billing')" id="btn-billing" class="px-6 py-4 text-sm tab-inactive">Billing</button>
+                </div>
+                
+                <div id="panel-preferences" class="p-8 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-semibold">Dark Mode</h4>
+                            <p class="text-sm text-gray-500">Easier on the eyes in low light.</p>
+                        </div>
+                        <div id="darkModeToggle" class="w-12 h-6 bg-gray-200 rounded-full relative cursor-pointer transition-colors" onclick="toggleSwitch(this)">
+                            <div class="w-5 h-5 bg-white rounded-full absolute left-0.5 top-0.5 shadow-sm transition-all duration-200"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-700">Language</label>
+                        <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm bg-gray-50">
+                            <option>English (US)</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-700">Timezone</label>
+                        <select class="w-full border border-gray-300 rounded px-3 py-2 text-sm bg-gray-50">
+                            <option>(UTC-08:00) Pacific Time</option>
+                            <option>(UTC-05:00) Eastern Time</option>
+                            <option>(UTC+00:00) London</option>
+                        </select>
+                    </div>
+                    <button onclick="saveChanges()" class="w-full bg-blue-600 text-white font-bold py-2.5 rounded-lg hover:bg-blue-700 transition-colors mt-4">
+                        Save Preferences
+                    </button>
                 </div>
 
-                <div class="flex-1 bg-white border border-slate-200 rounded-[40px] p-12 shadow-sm">
-                    <div id="panel-general">
-                        <div class="flex items-center gap-8 mb-12">
-                            <div class="relative group">
-                                <img src="https://i.pravatar.cc/150?u=john" class="w-24 h-24 rounded-[32px] ring-4 ring-indigo-50 object-cover">
-                                <button onclick="alert('System: Opening photo uploader...')" class="absolute -bottom-2 -right-2 bg-white border border-slate-200 p-2 rounded-xl shadow-xl hover:bg-slate-50 transition-all">
-                                    📸
-                                </button>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-black text-slate-800">John Doe</h4>
-                                <p class="text-slate-400 font-bold">Project Manager @ Design Ops</p>
-                            </div>
-                        </div>
+                <div id="panel-security" class="p-8 hidden">
+                    <h3 class="font-bold text-lg mb-4">Security Settings</h3>
+                    <p class="text-gray-500 mb-6">Manage your password and session preferences.</p>
+                    <button onclick="alert('System: Redirecting to password reset flow...')" class="border border-gray-300 px-4 py-2 rounded-lg text-sm font-bold">Change Password</button>
+                </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Display Name</label>
-                                <input type="text" id="displayNameV2" value="John Doe" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 text-sm font-bold focus:ring-2 focus:ring-indigo-500 outline-none">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Interface Language</label>
-                                <select class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 text-sm font-bold focus:ring-2 focus:ring-indigo-500 outline-none">
-                                    <option>English (United Kingdom)</option>
-                                    <option>English (USA)</option>
-                                    <option>Spanish (ES)</option>
-                                </select>
-                            </div>
-                            <div class="col-span-1 sm:col-span-2 flex items-center justify-between bg-slate-50 p-6 rounded-[32px]">
-                                <div>
-                                    <h4 class="font-black text-slate-800">Experimental Dark Mode</h4>
-                                    <p class="text-xs font-bold text-slate-400">Try our new high-contrast interface.</p>
-                                </div>
-                                <div onclick="toggleV2(this)" class="w-14 h-8 bg-slate-200 rounded-full relative p-1 cursor-pointer transition-colors duration-200">
-                                    <div class="w-6 h-6 bg-white rounded-full absolute left-1 top-1 shadow-sm transition-all duration-200"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-12 pt-10 border-t border-slate-50 flex justify-end gap-6">
-                            <button onclick="location.reload()" class="font-black text-slate-400 hover:text-slate-600">Discard</button>
-                            <button onclick="saveChangesV2()" id="saveBtnV2" class="bg-indigo-600 text-white px-10 py-4 rounded-[24px] font-black shadow-xl shadow-indigo-100 hover:-translate-y-1 transition-all">Save All Changes</button>
-                        </div>
-                    </div>
-
-                    <div id="panel-account" class="hidden">
-                        <h3 class="text-xl font-black mb-6">Account Settings</h3>
-                        <p class="text-slate-500 font-bold mb-10">Manage your subscription and data export.</p>
-                        <button class="bg-slate-100 px-6 py-3 rounded-2xl font-black text-sm text-slate-700">Export All My Data</button>
-                    </div>
-
-                    <div id="panel-security" class="hidden">
-                        <h3 class="text-xl font-black mb-6">Security & Login</h3>
-                        <p class="text-slate-500 font-bold mb-10">Control authentication and active sessions.</p>
-                        <button class="bg-slate-100 px-6 py-3 rounded-2xl font-black text-sm text-slate-700">Enable 2FA</button>
-                    </div>
-
-                    <div id="panel-notifications" class="hidden">
-                        <h3 class="text-xl font-black mb-6">Notifications</h3>
-                        <p class="text-slate-500 font-bold mb-10">Choose how and when you want to be notified.</p>
-                        <button class="bg-slate-100 px-6 py-3 rounded-2xl font-black text-sm text-slate-700">Configure Channels</button>
-                    </div>
+                <div id="panel-billing" class="p-8 hidden">
+                    <h3 class="font-bold text-lg mb-4">Billing & Subscription</h3>
+                    <p class="text-gray-500 mb-6">You are currently on the **Free Starter Plan**.</p>
+                    <button onclick="alert('System: Opening plan selector...')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold">Upgrade Plan</button>
                 </div>
             </div>
         </main>
     </div>
 
     <script>
-        function setTab(tab) {
-            ['general', 'account', 'security', 'notifications'].forEach(t => {
-                const btn = document.getElementById('tab-' + t);
+        function switchTab(tab) {
+            // Update buttons
+            ['preferences', 'security', 'billing'].forEach(t => {
+                const btn = document.getElementById('btn-' + t);
                 const panel = document.getElementById('panel-' + t);
                 if (t === tab) {
-                    btn.classList.add('tab-btn-active');
-                    btn.classList.remove('tab-btn-inactive', 'hover:bg-slate-100');
+                    btn.classList.add('tab-active');
+                    btn.classList.remove('tab-inactive');
                     panel.classList.remove('hidden');
                 } else {
-                    btn.classList.remove('tab-btn-active');
-                    btn.classList.add('tab-btn-inactive', 'hover:bg-slate-100');
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('tab-inactive');
                     panel.classList.add('hidden');
                 }
             });
         }
 
-        function toggleV2(el) {
-            el.classList.toggle('toggle-v2-active');
-            el.querySelector('div').classList.toggle('toggle-v2-dot-active');
+        function toggleSwitch(el) {
+            el.classList.toggle('toggle-active');
+            const dot = el.querySelector('div');
+            dot.classList.toggle('toggle-dot-active');
         }
 
-        function saveChangesV2() {
-            const name = document.getElementById('displayNameV2').value;
-            const btn = document.getElementById('saveBtnV2');
-            btn.textContent = 'Updating...';
-            btn.classList.replace('bg-indigo-600', 'bg-indigo-400');
+        function saveChanges() {
+            const btn = document.querySelector('button[onclick="saveChanges()"]');
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
             setTimeout(() => {
-                btn.textContent = 'Save All Changes';
-                btn.classList.replace('bg-indigo-400', 'bg-indigo-600');
-                alert(`Platform: Account settings for ${name} updated successfully!`);
-            }, 1000);
+                btn.textContent = 'Save Preferences';
+                btn.disabled = false;
+                alert('Success: Settings saved successfully!');
+            }, 800);
         }
     </script>
 </body>
